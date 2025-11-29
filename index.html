@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксперимент по запоминанию слов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            transition: background-color 0.3s;
+        }
+        .screen {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+        }
+        .active {
+            display: block;
+        }
+        .word {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        input {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .instruction {
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Экран ввода ID -->
+    <div id="idScreen" class="screen active">
+        <h2>Введите ваш ID</h2>
+        <input type="text" id="participantId" placeholder="Ваш ID">
+        <br>
+        <button onclick="startExperiment()">Начать эксперимент</button>
+    </div>
+
+    <!-- Экран инструкций -->
+    <div id="instructionScreen" class="screen">
+        <h2>Инструкция</h2>
+        <div id="instructionText" class="instruction"></div>
+        <button onclick="startTrials()">Понятно, начинаем</button>
+    </div>
+
+    <!-- Экран показа слов -->
+    <div id="wordScreen" class="screen">
+        <div id="wordDisplay" class="word"></div>
+    </div>
+
+    <!-- Экран ввода ответа -->
+    <div id="inputScreen" class="screen">
+        <h3>Введите слова через пробел:</h3>
+        <input type="text" id="userInput" placeholder="Начинайте печатать..." autocomplete="off">
+        <br>
+        <button onclick="submitResponse()">Отправить ответ</button>
+        <p style="font-size: 14px; color: #666;">Enter - отправить, Backspace - удалить</p>
+    </div>
+
+    <!-- Экран паузы -->
+    <div id="pauseScreen" class="screen">
+        <h2>Пауза</h2>
+        <div class="instruction">Отдохните 30 секунд</div>
+        <div id="countdown" style="font-size: 24px; margin: 20px;"></div>
+    </div>
+
+    <!-- Финальный экран -->
+    <div id="endScreen" class="screen">
+        <h2>Эксперимент завершен!</h2>
+        <div class="instruction">Спасибо за участие! Данные сохранены.</div>
+    </div>
+
+    <script src="experiment.js"></script>
+</body>
+</html>
