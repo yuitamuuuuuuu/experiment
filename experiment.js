@@ -36,7 +36,7 @@ class Experiment {
     startExperiment() {
         this.participantId = document.getElementById('participantId').value.trim();
         if (!this.participantId) {
-            alert("Бля, введи ID сначала!");
+            alert("Введите своё имя:");
             return;
         }
 
